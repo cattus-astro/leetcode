@@ -1,5 +1,4 @@
 #include <stdbool.h>
-#include <stdlib.h>
 
 #define MAX_HASH_SIZE                                                          \
   2003 // 해쉬테이블의 크기는 실제 자료(문제 기준 500)의 2~4배로 설정하는
@@ -50,23 +49,6 @@ bool hasKey(HashTable *hashTable, int key) {
     }
 
     hash = (hash + 1) % MAX_HASH_SIZE;
-  }
-
-  return false;
-}
-
-bool checkIfExist(int *arr, int arrSize) {
-  HashTable *hashTable = (HashTable *)calloc(1, sizeof(HashTable));
-
-  for (int i = 0; i < arrSize; i++) {
-    int key = arr[i];
-
-    if (hasKey(hashTable, key * 2) ||
-        (key % 2 == 0 && hasKey(hashTable, key / 2))) {
-      return true;
-    }
-
-    add(hashTable, key);
   }
 
   return false;
